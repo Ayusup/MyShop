@@ -1,0 +1,109 @@
+{
+  ConstraintSets: {
+    start: {
+      main_layout: {
+        start: ["parent", "start", 0],
+        top: ["parent","top", 0],
+        bottom: ['parent', 'bottom', 0],
+        scaleX: 1,
+        scaleY: 1,
+      },
+      profile_screen: {
+        start: ["parent", "start", 0],
+        top: ["parent","top", 0],
+        bottom: ['parent', 'bottom', 0],
+        end: ['parent', 'end', 0],
+        scaleX: 1,
+        scaleY: 1,
+      }
+    },
+    end: {
+      main_layout: {
+        start: ["parent", "end", -200],
+        top: ["parent","top", 0],
+        bottom: ['parent', 'bottom', 0],
+//        translationX: 500,
+        scaleY: .5,
+        scaleX: .5,
+      },
+      profile_screen: {
+        start: ["parent", "start", 0],
+        top: ["parent","top", 0],
+        bottom: ['parent', 'bottom', 0],
+        end: ['parent', 'end', 0],
+        scaleX: 1,
+        scaleY: 1,
+      }
+    },
+
+    motion: {
+      pathArc : 'none',
+      stagger: 3,
+      quantize: [6, 'overshoot', 32],
+      easing: 'overshoot'
+    }
+
+  },
+
+  Transitions: {
+    default: {
+      from: 'start',
+      to: 'end',
+      pathMotionArc: 'none',
+      duration: 400,
+      staggered: 0.4,
+      onSwipe: {
+        anchor: 'main_layout',
+        maxVelocity: 4.2,
+        maxAccel: 3,
+        direction: 'end',
+        touchUp: "autocomplete",
+        side: 'start',
+        mode: 'velocity'
+      },
+      KeyFrames: {
+        KeyPositions: [
+          {
+            target: ['motion_layout'],
+            frames: [25, 50, 75],
+            percentX: [0.4, 0.8, 0.1],
+            percentY: [0.4, 0.8, 0.3]
+          }
+        ],
+//        KeyCycles: [
+//          {
+//            target: ['a'],
+//            frames: [0, 50, 100],
+//            period: [0 , 2 , 0],
+//            rotationX: [0, 45, 0],
+//            rotationY: [0, 45, 0],
+//          }
+//        ]
+      }
+    }
+  }
+}
+
+//  Transitions: {
+//    motion: {
+//      from: 'start',
+//      to: 'end',
+//      pathMotionArc: 'none',
+//      duration: 550,
+//      OnSwipe: {
+//        anchor: 'main_layout',
+//        direction: 'end',
+//        side: 'start',
+//      },
+//      keyFrames: {
+//        KeyAttributes: [
+//          {
+//            target: ['main_layout'],
+//            frames: [0, 100],
+//            translationX: [50, 0],
+//          }
+//        ]
+//      }
+//    }
+//  }
+//}
